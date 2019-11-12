@@ -1,0 +1,7 @@
+module Workarea
+  decorate Storefront::CartViewModel, with: :avatax do
+    def show_taxes?
+      super && tax_total.present?
+    end
+  end
+end

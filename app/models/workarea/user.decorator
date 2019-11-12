@@ -1,0 +1,7 @@
+module Workarea
+  decorate User, with: :avatax do
+    decorated do
+      field :customer_usage_type, type: String, default: "TAXABLE"
+    end
+  end
+end

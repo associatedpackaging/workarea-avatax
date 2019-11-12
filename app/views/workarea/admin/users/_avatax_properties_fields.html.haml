@@ -1,0 +1,5 @@
+.property
+  = label_tag 'user[customer_usage_type]', nil, class: 'property__name' do
+    %span.property__text= t('workarea.admin.users.edit.avatax_entity_use_code')
+  .value
+    = select_tag 'user[customer_usage_type]', options_for_select(@user.avatax_usage_options, @user.customer_usage_type)

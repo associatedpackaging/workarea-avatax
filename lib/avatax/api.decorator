@@ -1,0 +1,52 @@
+module AvaTax
+  decorate API, with: :workarea_avatax do
+    def request(method, path, model, options = {})
+      timeout = options.delete(:timeout)
+
+      connection.send(method) do |request|
+        request.options.timeout = timeout if timeout
+
+        case method
+        when :get, :delete
+          request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
+        when :post, :put
+          request.path = ("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
+          request.headers["Content-Type"] = "application/json"
+          request.body = model.to_json unless model.empty?
+        end
+      end
+    end
+
+    private
+
+    # NOTE: Remove this decoration when
+    #       https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK/issues/16 is
+    #       resolved and merged in.
+    def connection
+      client_id = "#{app_name};#{app_version};RubySdk;#{AvaTax::VERSION.dup};#{machine_name}"
+      options = {
+        :headers =>
+          {
+           'Accept' => "application/json; charset=utf-8",
+           'User-Agent' => user_agent,
+           'X-Avalara-Client' => client_id
+          },
+        :url => endpoint,
+        :proxy => proxy,
+      }.merge(connection_options)
+
+      Faraday.new(options) do |faraday|
+        faraday.response :oj, content_type: /\bjson$/
+        faraday.basic_auth(username, password)
+
+        if logger
+          faraday.response :logger do |logger|
+            logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
+          end
+        end
+
+        faraday.adapter Faraday.default_adapter
+      end
+    end
+  end
+end

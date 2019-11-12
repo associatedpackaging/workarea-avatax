@@ -1,0 +1,21 @@
+module Workarea
+  decorate Admin::UserViewModel, with: :avatax do
+    def avatax_usage_options
+      Avatax::UsageType.all.map do |usage_type|
+        [usage_type_display(usage_type), usage_type.code]
+      end
+    end
+
+    private
+
+    def usage_type_display(usage_type)
+      countries =
+        if usage_type.countries.empty?
+          ""
+        else
+          "(#{usage_type.countries.map(&:local_name).join(', ')})"
+        end
+      [usage_type.name, countries].compact.join(' ')
+    end
+  end
+end
