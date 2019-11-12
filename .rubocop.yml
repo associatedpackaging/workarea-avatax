@@ -1,8 +1,8 @@
-inherit_from: .rails-rubocop.yml
+inherit_from:
+  - https://raw.githubusercontent.com/workarea-commerce/workarea/master/.rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.4
   Exclude:
-    - 'lib/avatax.rb'
-    - 'lib/avatax/**/*'
-    - 'vendor/**/*'
+    - 'test/dummy/**/*'
+    - 'lib/workarea/payflow_pro.rb'
+    - 'lib/workarea/payflow_pro/**/*'
