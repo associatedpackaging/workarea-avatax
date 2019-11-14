@@ -33,6 +33,28 @@ module Workarea
             shipping_tax_line = response.tax_line_for_shipping(shipping)
             adjust_pricing(shipping, shipping_tax_line, "shipping_service_tax" => true)
           end
+
+          order.items.reject(&:requires_shipping?).each do |non_shipped_item|
+            non_shipped_item.price_adjustments.each do |adjustment|
+              tax_line = response.tax_line_for_adjustment(adjustment)
+              next unless tax_line.present? && tax_line.tax.to_m > 0
+
+              data = {
+                'adjustment' => adjustment.id,
+                'order_item_id' => adjustment._parent.id,
+                'tax_code' => adjustment.data['tax_code']
+              }
+
+              non_shipped_item.adjust_pricing(
+                price: 'tax',
+                calculator: self.class.name,
+                description: 'Item Tax',
+                amount: tax_line.tax.to_m,
+                data: data.merge(find_line_details(tax_line))
+              )
+            end
+          end
+
         rescue Faraday::Error => error
           Raven.capture_exception(error) if defined?(Raven)
           avatax_fallback(error)
@@ -63,17 +85,19 @@ module Workarea
           def adjust_pricing(shipping, tax_line, data = {})
             return if tax_line.tax.to_m.zero?
 
-            line_details = tax_line.details.each_with_object({}) do |detail, memo|
-              memo[detail.taxName] = detail.rate
-            end
-
             shipping.adjust_pricing(
               price: "tax",
               calculator: self.class.name,
               description: "Sales Tax",
               amount: tax_line.tax.to_m,
-              data: data.merge(line_details)
+              data: data.merge(find_line_details(tax_line))
             )
+          end
+
+          def find_line_details(tax_line)
+            tax_line.details.each_with_object({}) do |detail, memo|
+              memo[detail.taxName] = detail.rate
+            end
           end
       end
     end

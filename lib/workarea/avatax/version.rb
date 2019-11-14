@@ -1,5 +1,5 @@
 module Workarea
   module Avatax
-    VERSION = "4.1.2"
+    VERSION = '4.2.0.pre'
   end
 end
