@@ -34,7 +34,7 @@ module Workarea
             adjust_pricing(shipping, shipping_tax_line, "shipping_service_tax" => true)
           end
 
-          order.items.reject(&:requires_shipping?).each do |non_shipped_item|
+          order.items.reject(&:shipping?).each do |non_shipped_item|
             non_shipped_item.price_adjustments.each do |adjustment|
               tax_line = response.tax_line_for_adjustment(adjustment)
               next unless tax_line.present? && tax_line.tax.to_m > 0
