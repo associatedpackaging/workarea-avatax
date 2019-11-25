@@ -80,7 +80,7 @@ module Workarea
           order = Order.new(
             items: [
               {
-                requires_shipping: false,
+                fulfillment: 'ignore',
                 price_adjustments: [
                   {
                     price: "item",
