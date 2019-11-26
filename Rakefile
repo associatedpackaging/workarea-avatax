@@ -44,6 +44,7 @@ task :release do
   system "git push --tags"
 
   system "gem build workarea-avatax.gemspec"
+  system "gem push workarea-avatax-#{Workarea::Avatax::VERSION}.gem"
   system "gem push workarea-avatax-#{Workarea::Avatax::VERSION}.gem --host #{host}"
   system "rm workarea-avatax-#{Workarea::Avatax::VERSION}.gem"
 end
