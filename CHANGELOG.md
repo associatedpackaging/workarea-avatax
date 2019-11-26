@@ -1,3 +1,14 @@
+Workarea Avatax 4.2.0 (2019-11-26)
+--------------------------------------------------------------------------------
+
+*   Support tax on non-shipping items
+
+    Since v3.5 supports non-shipping items natively, this checks those to
+    assign taxes from Avalara.
+    Ben Crouse
+
+
+
 Workarea Avatax 4.1.2 (2019-09-17)
 --------------------------------------------------------------------------------
 
