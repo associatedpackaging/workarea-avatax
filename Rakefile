@@ -38,10 +38,9 @@ task :release do
   Rake::Task["workarea:changelog"].execute
   system "git add CHANGELOG.md"
   system 'git commit -m "Update CHANGELOG"'
-  system "git push origin HEAD"
 
   system "git tag -a v#{Workarea::Avatax::VERSION} -m 'Tagging #{Workarea::Avatax::VERSION}'"
-  system "git push --tags"
+  system "git push origin HEAD --follow-tags"
 
   system "gem build workarea-avatax.gemspec"
   system "gem push workarea-avatax-#{Workarea::Avatax::VERSION}.gem"
