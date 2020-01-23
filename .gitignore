@@ -16,3 +16,4 @@ Gemfile.lock
 coverage
 .DS_Store
 .byebug_history
+.rubocop-http*
