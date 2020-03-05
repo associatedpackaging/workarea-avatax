@@ -1,3 +1,16 @@
+Workarea Avatax 4.2.1 (2020-03-05)
+--------------------------------------------------------------------------------
+
+*   Respect the tax exempt flag on b2b account
+
+    Checks for the installation for b2b plugin and creates zero dollar
+    price adjustments for tax exempt organizations
+
+    AVATAX-2
+    Jeff Yucis
+
+
+
 Workarea Avatax 4.2.0 (2019-11-26)
 --------------------------------------------------------------------------------
 
