@@ -33,9 +33,7 @@ module Workarea
       if Rails.application.secrets.avatax.present?
         avatax_secrets = Rails.application.secrets.avatax.deep_symbolize_keys
 
-        connection_options = {
-          request: { timeout: avatax_secrets[:timeout] || 2 }
-        }
+        connection_options = {}
 
         if ENV["HTTP_PROXY"].present?
           connection_options.merge!(proxy: ENV["HTTP_PROXY"])
