@@ -1,5 +1,4 @@
 require "avatax"
-require "avatax/api.decorator"
 require "hashie"
 require "workarea/core"
 require "workarea/storefront"
