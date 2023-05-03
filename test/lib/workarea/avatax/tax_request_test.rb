@@ -34,6 +34,7 @@ module Workarea
 
         def configure_sandbox
           AvaTax.configure do |config|
+            config.faraday_response = true
             config.endpoint = "https://sandbox-rest.avatax.com/"
             config.username = "jyucis-lp-avatax@weblinc.com"
             config.password = "Jm{m3NX.Q"
