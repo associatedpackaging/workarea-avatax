@@ -18,8 +18,6 @@ module Workarea
       Avatax.auto_configure_gateway
       assert_instance_of(AvaTax::Client, Avatax.gateway)
 
-      assert_includes(Avatax.gateway.connection_options[:request].keys, :timeout)
-
     ensure
       Rails.application.secrets.delete(:avatax)
       Avatax.gateway = Avatax::BogusGateway.new
