@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.2.2"
 
   s.add_dependency 'workarea', '>= 3.5.x'
-  s.add_dependency "avatax", "~> 18.12.0"
+  s.add_dependency "avatax", "~> 21.10.0"
   s.add_dependency "hashie", "~> 3.0"
 end
