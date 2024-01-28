@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxInvoiceWorker
       include Sidekiq::Worker
       include Sidekiq::CallbacksWorker
