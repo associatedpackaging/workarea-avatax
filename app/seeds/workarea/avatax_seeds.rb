@@ -1,5 +1,5 @@
 module Workarea
-  class AvaTaxSeeds
+  class AvataxSeeds
     def perform
       return unless AvaTax.config[:username].present? && AvaTax.config[:password].present?
       puts "Adding Avalara Usage Types..."

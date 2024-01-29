@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Workarea
-  class AvaTaxTest < Workarea::TestCase
+  class AvataxTest < Workarea::TestCase
     def test_auto_configure_gateway_creates_bogus_gateway_without_secrets
       assert_instance_of(AvaTax::BogusGateway, AvaTax.gateway)
     end
