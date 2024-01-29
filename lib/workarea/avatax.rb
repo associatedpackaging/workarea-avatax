@@ -5,7 +5,7 @@ require "workarea/storefront"
 require "workarea/admin"
 
 module Workarea
-  module Avatax
+  module AvaTax
     include ActiveSupport::Configurable
 
     # Config for how orders should post to avatax
@@ -49,7 +49,7 @@ module Workarea
         end
         self.gateway = ::AvaTax.client
       elsif gateway.blank?
-        self.gateway = Avatax::BogusGateway.new
+        self.gateway = AvaTax::BogusGateway.new
       end
     end
   end

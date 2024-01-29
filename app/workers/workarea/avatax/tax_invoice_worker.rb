@@ -7,7 +7,7 @@ module Workarea
       sidekiq_options(
         enqueue_on: {
           Workarea::Order => :place,
-          ignore_if: -> { Avatax.config.order_handling == :none }
+          ignore_if: -> { AvaTax.config.order_handling == :none }
         }
       )
 
@@ -15,11 +15,11 @@ module Workarea
         order = Workarea::Order.find(order_id)
         shippings = Workarea::Shipping.where(order_id: order.id).to_a
 
-        response = Avatax::TaxRequest.new(
+        response = AvaTax::TaxRequest.new(
           order: order,
           shippings: shippings,
           type: "SalesInvoice",
-          commit: Avatax.commit?
+          commit: AvaTax.commit?
         ).response
 
         raise "Failed to invoice tax for order: #{order.id}" unless response.success?

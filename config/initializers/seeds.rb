@@ -1,1 +1,1 @@
-Workarea.config.seeds.append("Workarea::AvataxSeeds")
+Workarea.config.seeds.append("Workarea::AvaTaxSeeds")

@@ -1,11 +1,11 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class Engine < ::Rails::Engine
       include Workarea::Plugin
 
-      isolate_namespace Workarea::Avatax
+      isolate_namespace Workarea::AvaTax
 
-      #Workarea::Avatax.configure do |config|
+      #Workarea::AvaTax.configure do |config|
       #  config.valid_service_urls = [
       #    "https://development.avalara.net",   # development
       #    "https://avatax.avalara.net"         # production
@@ -29,7 +29,7 @@ module Workarea
       end
 
       #initializer "workarea.avatax.listeners" do
-      #  Workarea::Publisher.add_listener(Workarea::Avatax::InvoiceListener)
+      #  Workarea::Publisher.add_listener(Workarea::AvaTax::InvoiceListener)
       #end
     end
   end

@@ -1,4 +1,4 @@
-Workarea::Avatax.configure do |config|
+Workarea::AvaTax.configure do |config|
   config.distribution_center = {
     Line1:      "12 N 3rd St",
     city:       "Philadelphia",

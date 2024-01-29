@@ -1,7 +1,7 @@
 module Workarea
   module Pricing
     module Calculators
-      # Calculates order/shipping sales tax via the Avalara Avatax API
+      # Calculates order/shipping sales tax via the Avalara AvaTax API
       #
       class AvalaraTaxCalculator
         include Calculator
@@ -30,7 +30,7 @@ module Workarea
             return
           end
 
-          response = Avatax::TaxRequest.new(
+          response = AvaTax::TaxRequest.new(
             order: order,
             shippings: shippings,
             **request_options

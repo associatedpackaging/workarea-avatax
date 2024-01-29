@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::Response
       attr_reader :response, :request_order_line_items, :request_shipping_line_items
       delegate :success?, to: :response

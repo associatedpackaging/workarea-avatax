@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequestTest < Workarea::TestCase
       setup :configure_sandbox
       teardown :reset_avatax_config
@@ -40,12 +40,12 @@ module Workarea
             config.password = "Jm{m3NX.Q"
           end
 
-          Avatax.gateway = ::AvaTax.client
+          AvaTax.gateway = ::AvaTax.client
         end
 
         def reset_avatax_config
           AvaTax.reset
-          Avatax.gateway = Avatax::BogusGateway.new
+          AvaTax.gateway = AvaTax::BogusGateway.new
         end
     end
   end

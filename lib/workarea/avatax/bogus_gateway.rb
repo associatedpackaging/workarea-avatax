@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class BogusGateway
       class BogusResponse
         private

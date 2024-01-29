@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Workarea
   module Storefront
-    class AvataxSystemTest < Workarea::SystemTest
+    class AvaTaxSystemTest < Workarea::SystemTest
       include Storefront::SystemTest
 
       setup :setup_checkout_specs
