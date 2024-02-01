@@ -44,7 +44,7 @@ module Workarea
         end
 
         def reset_avatax_config
-          AvaTax.reset
+          ::AvaTax.reset
           AvaTax.gateway = AvaTax::BogusGateway.new
         end
     end
