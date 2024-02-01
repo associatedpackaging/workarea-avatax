@@ -16,7 +16,7 @@ module Workarea
       )
 
       AvaTax.auto_configure_gateway
-      assert_instance_of(AvaTax::Client, AvaTax.gateway)
+      assert_instance_of(::AvaTax::Client, AvaTax.gateway)
 
     ensure
       Rails.application.secrets.delete(:avatax)
