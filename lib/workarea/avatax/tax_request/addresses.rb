@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::Addresses
       attr_reader :tax_request
 
@@ -16,7 +16,7 @@ module Workarea
       private
 
         def ship_from
-          Avatax.config.distribution_center
+          AvaTax.config.distribution_center
         end
 
         def ship_to

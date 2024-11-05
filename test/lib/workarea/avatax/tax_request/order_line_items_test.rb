@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::OrderLinesTest < TestCase
       def test_lines_with_single_shipping
         order = create_checkout_order(email: "epigeon@weblinc.com")

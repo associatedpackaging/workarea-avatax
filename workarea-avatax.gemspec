@@ -4,11 +4,11 @@ require "workarea/avatax/version"
 
 Gem::Specification.new do |s|
   s.name        = "workarea-avatax"
-  s.version     = Workarea::Avatax::VERSION
+  s.version     = Workarea::AvaTax::VERSION
   s.authors     = ["Eric Pigeon"]
   s.email       = ["epigeon@workarea.com"]
   s.summary     = "Avalara Tax Plugin for the Workarea Ecommerce Platform"
-  s.description = "Avatax is a service for sales tax calculation and compliance"
+  s.description = "AvaTax is a service for sales tax calculation and compliance"
   s.license     = "MIT"
   s.files       = `git ls-files`.split("\n")
 

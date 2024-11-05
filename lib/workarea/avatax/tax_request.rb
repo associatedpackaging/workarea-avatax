@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest
       attr_reader :order, :shippings, :options
 
@@ -11,7 +11,7 @@ module Workarea
 
       def response
         @response ||= Response.new(
-          response: Avatax.gateway.create_transaction(request_body, request_options),
+          response: AvaTax.gateway.create_transaction(request_body, request_options),
           request_order_line_items: order_lines.order_line_items,
           request_shipping_line_items: order_lines.shipping_line_items
         )
@@ -66,7 +66,7 @@ module Workarea
         end
 
         def company_code
-          Workarea::Avatax.config.company_code
+          Workarea::AvaTax.config.company_code
         end
 
         def order_lines

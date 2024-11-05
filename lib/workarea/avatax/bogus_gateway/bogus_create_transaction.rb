@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class BogusGateway::BogusCreateTransaction < BogusGateway::BogusResponse
       attr_reader :request_body
 

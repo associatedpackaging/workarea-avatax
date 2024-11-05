@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create?timeout=2
     body:
       encoding: UTF-8
       string: '{"type":"SalesOrder","date":"2019-07-01T09:50:30-04:00","code":"12D244609B","companyCode":null,"customerCode":"epigeon@weblinc.com","customerUsageType":null,"addresses":{"shipFrom":{"Line1":"12

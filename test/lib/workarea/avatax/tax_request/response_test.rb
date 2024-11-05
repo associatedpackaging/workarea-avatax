@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::ResponseTest < Workarea::TestCase
       setup :create_tax_rate
 

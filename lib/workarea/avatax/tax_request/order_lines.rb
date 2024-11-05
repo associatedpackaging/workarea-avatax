@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::OrderLines
       attr_reader :order, :shippings
 

@@ -11,4 +11,4 @@ if Rails.application.secrets.avatax.present?
   end
 end
 
-Workarea::Avatax.auto_configure_gateway
+Workarea::AvaTax.auto_configure_gateway

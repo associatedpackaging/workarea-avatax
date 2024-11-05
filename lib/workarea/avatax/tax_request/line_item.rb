@@ -1,5 +1,5 @@
 module Workarea
-  module Avatax
+  module AvaTax
     class TaxRequest::LineItem
       attr_accessor :line_number
 

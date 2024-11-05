@@ -1,6 +1,6 @@
 module Workarea
   module Factories
-    module AvataxFactories
+    module AvaTaxFactories
       Factories.add self
 
       def create_checkout_order(overrides = {})

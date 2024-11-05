@@ -1,5 +1,5 @@
 module Workarea
-  class AvataxSeeds
+  class AvaTaxSeeds
     def perform
       return unless AvaTax.config[:username].present? && AvaTax.config[:password].present?
       puts "Adding Avalara Usage Types..."
@@ -8,7 +8,7 @@ module Workarea
       raise "Failed to get avatax usage codes from api" unless result.success?
 
       result.body["value"].each do |entity_use_code|
-        Workarea::Avatax::UsageType.find_or_create_by(
+        Workarea::AvaTax::UsageType.find_or_create_by(
           code: entity_use_code["code"],
           name: formatted_names.fetch(entity_use_code["name"], entity_use_code["name"]),
           country_codes: entity_use_code["validCountries"]
