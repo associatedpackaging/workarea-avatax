@@ -34,7 +34,7 @@ module Workarea
             "companyId" => 0,
             "status"    => "Temporary",
             "type"      => "SalesOrder",
-            "totalTax"  => lines.sum { |line| line["tax"] },
+            "totalTax"  => lines.sum { |line| line["tax"].to_f },
             "lines"     => lines
           }
         end
