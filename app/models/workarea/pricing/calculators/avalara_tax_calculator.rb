@@ -7,29 +7,6 @@ module Workarea
         include Calculator
 
         def adjust
-          if organization_tax_exempt?
-             shippings.each do |tmp_shipping|
-              next unless tmp_shipping.address.present?
-
-              price_adjustments_for(tmp_shipping).each do |adjustment|
-                tmp_shipping.adjust_pricing(
-                  price: 'tax',
-                  calculator: self.class.name,
-                  description: 'Item Tax',
-                  amount: 0.to_m,
-                  data: {
-                    'adjustment' => adjustment.id,
-                    'order_item_id' => adjustment._parent.id,
-                    'tax_code' => adjustment.data['tax_code'],
-                    'tax_exempt' => true
-                  }
-                )
-              end
-            end
-
-            return
-          end
-
           response = AvaTax::TaxRequest.new(
             order: order,
             shippings: shippings,
@@ -84,16 +61,6 @@ module Workarea
         end
 
         private
-
-          def organization_tax_exempt?
-            return false unless Workarea::Plugin.installed?(:b2b)
-
-            account = Organization::Account.find(order.account_id) rescue nil
-
-            return unless account.present?
-
-            account.tax_exempt?
-          end
 
           def request_options
             { timeout: 2 }
