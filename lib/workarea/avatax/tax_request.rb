@@ -62,7 +62,7 @@ module Workarea
         def customer_usage_type
           return "" unless order.account_id.present?
 
-          Organization::Account.find(order.account_id).try(:tax_code) rescue “”
+          Organization::Account.find(order.account_id).try(:entity_use_code) rescue “”
         end
 
         def company_code
