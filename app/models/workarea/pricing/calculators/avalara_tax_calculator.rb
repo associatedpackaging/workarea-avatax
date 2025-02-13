@@ -7,6 +7,7 @@ module Workarea
         include Calculator
 
         def adjust
+          puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GOT TO ADJUST"
           if organization_tax_exempt?
              shippings.each do |tmp_shipping|
               next unless tmp_shipping.address.present?
@@ -90,7 +91,7 @@ module Workarea
 
             account = Organization::Account.find(order.account_id) rescue nil
 
-            return false unless account.present?
+            return unless account.present?
 
             account.entity_use_code != 'TAXABLE'
           end
