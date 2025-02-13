@@ -7,7 +7,6 @@ module Workarea
         include Calculator
 
         def adjust
-          puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GOT TO ADJUST"
           if organization_tax_exempt?
              shippings.each do |tmp_shipping|
               next unless tmp_shipping.address.present?
