@@ -92,7 +92,7 @@ module Workarea
 
             return unless account.present?
 
-            account.tax_exempt?
+            account.entity_use_code != 'TAXABLE'
           end
 
           def request_options

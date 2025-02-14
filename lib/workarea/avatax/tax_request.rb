@@ -60,9 +60,9 @@ module Workarea
         end
 
         def customer_usage_type
-          return "" unless order.email.present?
+          return "" unless order.account_id.present?
 
-          User.find_by_email(order.email).try(:customer_usage_type)
+          Organization::Account.find(order.account_id).try(:entity_use_code) rescue ""
         end
 
         def company_code
