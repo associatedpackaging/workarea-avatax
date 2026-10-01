@@ -11,7 +11,9 @@ module Workarea
       end
 
       def body
-        @body ||= Hashie::Mash.new response.body
+        # TODO: Searchkick - prevent wrong body namespace
+        target_body = response.body.presence || response.env.request_body
+        @body ||= Hashie::Mash.new target_body
       end
 
       def tax_line_for_adjustment(price_adjustment, shipping: nil)
